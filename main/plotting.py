@@ -16,13 +16,13 @@ title_center = "Geschwindigkeitsverlauf"
 title_left = "Testreihe 1"
 title_right = "Test Nr. 1"
 x_label = "t [s]"
-y_label_left = r'v(t) [$(\frac{m}{s})$]'
-y_label_right = r'a(t) [$(\frac{m}{s^2})$]'
+y_label_left = r'v(t) [$\frac{m}{s}$]'
+y_label_right = r'a(t) [$\frac{m}{s^2}$]'
 # Data as function
 # x = np.arange(0, 4, 0.05) # from range, to range, resolution
 # y = np.sin(x*np.pi) # function
 
-x = np.arange(0, 2, 0.05) # from range, to range, resolution
+x = np.arange(0, 2, 0.01) # from range, to range, resolution
 y = x**2 # function
 
 # Data in arrays
@@ -33,23 +33,22 @@ y = x**2 # function
 # ax.plot([1, 2, 3, 4], [1, 4, 2, 3]);  # Plot some data on the axes.
 
 fig, ax = plt.subplots(constrained_layout = True)
-ax.plot(x, y, linestyle = 'solid', label = 'Geschwindigkeit v(t)')
-ax.plot(x, (y/x), linestyle = 'dashed', label = 'Beschleunigung a(t)')
+ax.plot(x, y, linestyle = 'solid', label = 'Geschwindigkeit ' + y_label_left)
+ax.plot(x, (y/x), linestyle = 'dashed', label = 'Beschleunigung ' + y_label_right)
 
 
-#define functions for seoundary y-axis
-def val1(y):
-    return y
+# #define functions for seoundary y-axis
+# def val1(y):
+#     return y
  
-def val2(y):
-    return y
+# def val2(y):
+#     return y
  
-secax = ax.secondary_yaxis('right', functions =(val1, val2))
-secax.set_ylabel(y_label_left)
+# secax = ax.secondary_yaxis('right', functions =(val1, val2))
 
-# ax.set_xlabel(x_label)
-# ax.set_ylabel(y_label_left)
-ax.set(xlabel = 't (s)', ylabel = y_label_right)
+ax.set_xlabel(x_label)
+# ax.set_ylabel(ylabel = y_label_left)
+# secax.set_ylabel(y_label_right)
 ax.set_title(title_center)
 ax.set_title(title_left, loc='left')
 ax.set_title(title_right, loc='right')
